@@ -63,24 +63,40 @@ html {
   justify-content: center;
   align-items: center;
   gap: 2em;
+  font-size: 1.2em;
 
-  & button.play {
+  & button {
+    color: white;
+    background: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: white;
     cursor: pointer;
     border: none;
-    color: #2b2b2b;
-    font-size: 3em;
+    font-size: 1.4em;
     transition: all 0.3s;
 
-    &:hover {
-      background: #ffffffc2;
+    &.prev:hover,
+    &.next:hover {
+      color: #ffffffc2;
+    }
+
+    &.play {
+      padding: 1em;
+      color: #2b2b2b;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      font-size: 1.6em;
+      background: white;
+
+      &:hover {
+        background: #ffffffc2;
+      }
+    }
+
+    &:active {
+      transform: translateY(10px);
     }
   }
 }
