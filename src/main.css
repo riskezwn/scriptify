@@ -8,13 +8,6 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* .header {
-  color: #9ef7aa;
-  background-color: #077457;
-  padding: 0.5em 1em;
-  grid-row: 1;
-} */
-
 .container {
   height: 100vh;
   width: 100vw;
@@ -103,14 +96,23 @@ html {
 
 .player-pregressbar {
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
   align-items: flex-start;
 
-  & .bar {
+  & .bar, & .inner-bar {
     background: white;
     width: 100%;
     margin: 0 2em;
     height: 3px;
+    border-radius: 3px;
+
+    & .inner-bar {
+      margin: 0;
+      margin-right: auto;
+      background: #077457;
+      width: 0;
+    }
+
   }
 }
 

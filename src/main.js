@@ -8,9 +8,14 @@ const playPauseButton = document.querySelector(".play");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
 const playPauseIcon = document.querySelector(".play-icon");
+const durationBar = document.querySelector(".inner-bar");
 
 let currentSong = 1;
 let song = songsList[currentSong];
+
+const updateTime = () => {
+  song.addEventListener("timeupdate", (e) => onUpdateSongDuration(e));
+};
 
 const playSong = () => {
   /* url = songsList[currentSong];
@@ -19,7 +24,9 @@ const playSong = () => {
     playPauseIcon.classList.remove("fa-play");
     playPauseIcon.classList.add("fa-pause");
     song.play();
+    durationBar.style.width = 0;
     updateSongData();
+    updateTime();
   } else {
     playPauseIcon.classList.add("fa-play");
     playPauseIcon.classList.remove("fa-pause");
@@ -32,6 +39,7 @@ const prevSong = () => {
     song.pause();
     currentSong--;
     song = songsList[currentSong];
+    durationBar.style.width = 0;
     updateSongData();
   }
 };
@@ -41,6 +49,7 @@ const nextSong = () => {
     song.pause();
     currentSong++;
     song = songsList[currentSong];
+    durationBar.style.width = 0;
     updateSongData();
   }
 };
@@ -51,6 +60,13 @@ const updateSongData = () => {
 
   document.querySelector(".song-name").textContent = cleanSong;
   document.querySelector(".song-artist").textContent = artist;
+};
+
+const onUpdateSongDuration = (e) => {
+  console.log(song.currentTime);
+  const actualSecond = song.currentTime;
+  const barWidth = Math.floor((actualSecond * 100) / song.duration);
+  durationBar.style.width = `${barWidth}%`;
 };
 
 const cleanName = (url) => {
